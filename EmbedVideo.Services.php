@@ -105,11 +105,14 @@ $wgEmbedVideoServiceList = array(
 		'extern' => '$5'
 	),
 	'youtube' => array(
-		'extern' =>
-			'<iframe src="http://www.youtube.com/embed/$2?showsearch=0&amp;modestbranding=1" ' .
-				'width="$3" height="$4" ' .
-				'frameborder="0" allowfullscreen="true"></iframe>',
-	),
+        'extern' =>
+        '<iframe src="http://www.youtube.com/embed/$2"'.
+        (((strstr($_SERVER['HTTP_USER_AGENT'],'iPhone')) 
+            || (strstr($_SERVER['HTTP_USER_AGENT'],'iPod')) 
+            || (strstr($_SERVER['HTTP_USER_AGENT'],'iPad'))) ?
+                ' ' : '?showsearch=0&amp;modestbranding=1" ' 
+            .'width="$3" height="$4" ').'frameborder="0" allowfullscreen="true"></iframe>',
+    ),
 	'youtubehd' => array(
 		'extern' =>
 			'<iframe src="http://www.youtube.com/embed/$2?showsearch=0&amp;modestbranding=1&amp;hd=1" ' .
